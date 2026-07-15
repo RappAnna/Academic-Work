@@ -1,0 +1,23 @@
+Read-Me
+IBES_Forecast_EPS_Quarterly_Individual
+--> Data: IBES EPS Forecasts of individual forecasters with quarterly frequency, adjusted for stock splits, for all US-firms
+- pulls WRDS quarterly individual forecasts of EPS
+- linking CUSIPs with permno from CRSP
+- flagging each observation whether in SP500 or not
+- keep for each permno, target quarter, forecast horizon and estimator the most recent estimate in a quarter
+- create forecast error and forecast revision
+
+IBES_Forecast_LTG_Quarterly_Individual
+--> Data: IBES LTG of earnings of individual forecasters with quarterly frequency, for all US-firms
+- pulls WRDS quarterly individual forecasts of LTG of earnings
+- linking CUSIPs with permno from CRSP
+- flagging each observation whether in SP500 or not
+- keep for each permno and each date when forecast was done the most recent quarterly observation
+- calculate 1-year changes in the forecast for growth in earnings between years t and t-1 as forecast revision
+
+IBES_Forecast_EPS_LTG_Merge_Quarterly_Individual
+--> Data: dataframes of file "IBES_Forecast_EPS_Quarterly_Individual" and "IBES_Forecast_LTG_Quarterly_Individual"
+- merge both dataframes to one which gives overview over
+   a) quarterly estimates of EPS on individual basis for each permno as well as forecast revision and error of the EPS
+   b) forecasted LTG for the same estimator and permno where the forecast date of LTG is same as forecast date of EPS
+- merge based on the forecast date of the EPS: forecast of date is +/- 1 month of forecast date of EPS
